@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 const fetch = require('node-fetch');
-var shell = require('shelljs');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 var findColorPage = require('./util');
@@ -9,6 +9,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 let stylesArtboard;
+
 function getPalette(stylesArtboard) {
   // empty "palette obj" wheree we will store all colors
   const palette = {};
@@ -72,38 +73,20 @@ async function getFromApi() {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/api/hello', (req, res) => {
+app.get('/api/figma-token', (req, res) => {
   let result = '';
   getFromApi().then(rep => {
     result = baseTokeensJSON;
     // const resuuu = findColorPage(result.document.children);
-    
+
     if (stylesArtboard) {
       var re = getPalette(stylesArtboard);
-      
 
       var json = JSON.stringify(re);
 
       fs.writeFile('myjsonfile.json', json, 'utf8', err => {
         console.log(err);
       });
-
-
-    //   shell.exec('./buildScssFile.js')
-    //   // shell.exec('/buildScssFile.js', {silent:true}).stdout;
-
-    //   // shell.exec('node buildScssFile.js', function(code, stdout, stderr) {
-    //   //   console.log('Exit code:', code);
-    //   //   console.log('Program output:', stdout);
-    //   //   console.log('Program stderr:', stderr);
-    //   // });
-     
-    // //   exec('node buildScssFile.js', function (error, stdOut, stdErr) {
-    // //     // do what you want!
-    // // });
-      
-  
-     
     }
 
     res.send({ AlephDesignTokenFigma: result });

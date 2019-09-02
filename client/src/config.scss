@@ -3,7 +3,7 @@
 
 
 .container-s {
-  background-color: $primary-color;
+  background-color: $primary-success;
 }
 
 .App {
@@ -17,7 +17,7 @@
 }
 
 .App-header {
-  background-color: $hesikhela;
+  background-color: $primary-success;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color:$primary-success;
 }
 
 @keyframes App-logo-spin {
