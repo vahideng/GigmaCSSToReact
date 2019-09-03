@@ -1,3 +1,6 @@
+import React, {useEffect, useState} from 'react';
+import axios from '../../axios.config';
+
 import Button from '@material-ui/core/Button';
 import { green, purple } from '@material-ui/core/colors';
 import {
@@ -5,15 +8,42 @@ import {
   makeStyles,
   withStyles
 } from '@material-ui/core/styles';
-import React from 'react';
-import { rgba2hex } from '../../util';
+
+
+
+
+
 const AlephButton = (props: any) => {
-  const colors = props.styleFromFigma;
+
+
+  const [colorsApi, setColors] = useState()
+ let colors:any = null
+ 
+  
+  if(colorsApi){
+    console.log(colorsApi.token.colors,"colorsApi");
+    colors= colorsApi.token.colors
+  }
+  //  const colors = props.styleFromFigma;
 
   console.log(colors, 'cc');
 
   // const {Primary_auto_fill,Primary_disabled} = props.styleFromFigma&& props.styleFromFigma.colors
   // console.log(Primary_auto_fill,"Primary_auto_fill")
+
+  useEffect(() => {
+    console.log("componentDidMount");
+    axios.get(`figma-token`).then((res) => {
+      
+      setColors(res.data.AlephDesignTokenFigma)
+      
+    });
+    return () => {
+      console.log("componentWillUnmount");
+    
+    };
+  }, [colors]); // empty-array means don't watch for any updates
+
 
   const AlephButton = withStyles({
     root: {
@@ -65,11 +95,11 @@ const AlephButton = (props: any) => {
     }
   }))(Button);
 
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles((theme: any) => ({
     primary: {
       color: '#FFFFFF',
-
-      backgroundColor: `${colors.Primary.value}`
+      
+      backgroundColor: `${colors ? colors.Primary.value: "blue" }`
     },
 
     primaryWhiteBackground: {
@@ -77,12 +107,12 @@ const AlephButton = (props: any) => {
       color: '#00694B'
     },
     PrimaryDisabled: {
-      backgroundColor: `${colors.Primary_disabled.value}`,
+      // backgroundColor: `${colors.Primary_disabled.value}`,
       color: '#FFFFFF',
       pointerEvents: 'none'
     },
     PrimaryDisabledNoBackgroud: {
-      backgroundColor: `${colors.primary_nobackground.value}`,
+      // backgroundColor: `${colors.primary_nobackground.value}`,
       color: '#000000',
       pointerEvents: 'none',
       border: ' 2px solid #D5DADD'
@@ -90,7 +120,7 @@ const AlephButton = (props: any) => {
     PrimaryAutoFill: {
       color: '#000000',
 
-      backgroundColor: `${colors.Primary_auto_fill.value}`
+      // backgroundColor: `${colors.Primary_auto_fill.value}`
     }
   }));
 
@@ -126,10 +156,13 @@ const AlephButton = (props: any) => {
   }
 
   return (
+    
+
+    
     <>
       <AlephButton variant="contained" className={classType}>
         {props.title}
-      </AlephButton>
+      </AlephButton> 
     </>
   );
 };

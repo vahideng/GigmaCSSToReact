@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import axios from './axios.config';
 import Button from './components/Button/Button';
+import TextField from './components/textField'
 import './config.scss';
 
 // interface IResponse {
@@ -28,11 +29,11 @@ class App extends Component {
   };
 
   componentDidMount() {
-    axios.get(`figma-token`).then((res) => {
-      console.log(res);
+    // axios.get(`figma-token`).then((res) => {
+    //   console.log(res);
 
-      this.setState({ response: res.data.AlephDesignTokenFigma });
-    });
+    //   this.setState({ response: res.data.AlephDesignTokenFigma });
+    // });
   }
 
   render() {
@@ -40,32 +41,23 @@ class App extends Component {
 
     let button = null;
 
-    if (this.state.response && this.state.response.token.colors) {
+   
       button = (
         <React.Fragment>
           <Button
-            styleFromFigma={this.state.response.token.colors}
+           
             title="Add"
             type="primary"
           />
-          <Button
-            styleFromFigma={this.state.response.token.colors}
-            title="Add"
-            type="PrimaryDisabled"
-          />
-          <Button
-            styleFromFigma={this.state.response.token.colors}
-            title="Add"
-            type="primary_second"
-          />
-          <Button
-            styleFromFigma={this.state.response.token.colors}
-            title="Add"
-            type="PrimaryDisabledNoBackgroud"
-          />
+          
+          <TextField  type="ACTIVE" status="Error" labelName="First Name" />
+          <TextField type="Error" labelName="First Name" />
+          <TextField type="ACTIVE" status="Disabled" labelName="First Name" />
+          <TextField errorMessage="please enter a name" type="ACTIVE" status="Error" labelName="First Name" />
+
         </React.Fragment>
       );
-    }
+    
 
     return <div className="App"> {button}</div>;
   }
