@@ -32,12 +32,21 @@ const StyleDictionary = require("style-dictionary").extend({
                     filter: {
                         type: "spacers"
                     }
+                },
+                {
+                    destination: "_imageSize.scss",
+                    format: "scss/variables",
+                    filter: {
+                        type: "imageSize"
+                    }
                 }
             ]
         }
     }
 });
 
-StyleDictionary.buildAllPlatforms();
 
-console.log("done!");
+module.exports = StyleDictionary;
+
+
+

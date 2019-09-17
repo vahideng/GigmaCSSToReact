@@ -20,6 +20,7 @@ export async function getFromApi() {
   console.log(data, 'data');
 
   return data;
+ 
 }
 
 getFromApi();

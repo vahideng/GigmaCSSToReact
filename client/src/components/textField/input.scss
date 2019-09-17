@@ -1,5 +1,6 @@
 
 @import '../../../../alephFigma/colors';
+@import '../../../../alephFigma/typography';
 
 $font-stack: 'Roboto', Helvetica, sans-serif;
 
@@ -8,7 +9,8 @@ $primary-color: #333;
 $error-color : #cb2c32;
 
 .Container {
-  font: $font-stack;
+  font-family:$font-family-font-family-primary;
+  // font: $font-stack;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -17,19 +19,20 @@ $error-color : #cb2c32;
   align-self: flex-start;
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: $font-size-l;
   line-height: 14px;
   margin: 0;
   color: #686e71;
   padding-bottom: 8px;
 }
 .LabelError {
-  color:$primary-error;
+  color:$colors-yellow;
+  font-size: $font-size-h-1;
 }
 
 .InputWrapper {
   height: 56px;
-  background: $primary;
+  background: $colors-primary;
   border: none;
   //border: solid 1px #686e71;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
@@ -38,21 +41,23 @@ $error-color : #cb2c32;
   max-width: 600px;
 }
 .Active {
-  box-shadow: inset 0px -4px 0px $primary;
-  border: 1px solid $primary-second;
+  box-shadow: inset 0px -4px 0px $colors-primary;
+ border: 1px solid $colors-primary;
+ background-color: $colors-primary
 }
 .Disabled {
-  background: $primary-disabled;
+  background: $colors-primary-disabled;
 }
 
 .Error {
   border: 1px solid rgba(203, 44, 50, 0.05);
-  box-shadow: inset 0px -4px 0px $primary-error;
-  background-color: $primary-erro-background;
+   box-shadow: inset 0px -4px 0px $colors-primary-error;
+   background-color: $colors-primary-error;
 }
 
 .ErrorMessage {
   padding-top: 8px;
+  font-size: $font-size-l;
 }
 
 .Filled {

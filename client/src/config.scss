@@ -1,9 +1,14 @@
 @import '../../alephFigma/colors';
+@import '../../alephFigma/typography';
 
+body{
+  font-family:$font-family-font-family-primary;
+}
 
 
 .container-s {
-  background-color: $primary-success;
+ background-color: $colors-primary;
+
 }
 
 .App {
@@ -17,7 +22,7 @@
 }
 
 .App-header {
-  background-color: $primary-success;
+  // background-color: $primary-success;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -31,7 +36,7 @@
 }
 
 .App-link {
-  color:$primary-success;
+  // color:$primary-success;
 }
 
 @keyframes App-logo-spin {

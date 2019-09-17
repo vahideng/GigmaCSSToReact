@@ -22,9 +22,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react"
- 
   },
-    "include": [
-    "src", "stories/defaultTextField.story.tsx"
+  "include": [
+    "src",
+    "stories/defaultTextField.story.tsx"
   ]
 }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from '../../axios.config';
 
 import Button from '@material-ui/core/Button';
@@ -9,41 +9,37 @@ import {
   withStyles
 } from '@material-ui/core/styles';
 
-
-
-
-
 const AlephButton = (props: any) => {
+  const { colors } = props.color;
 
-
-  const [colorsApi, setColors] = useState()
- let colors:any = null
- 
   
-  if(colorsApi){
-    console.log(colorsApi.token.colors,"colorsApi");
-    colors= colorsApi.token.colors
-  }
-  //  const colors = props.styleFromFigma;
 
-  console.log(colors, 'cc');
+  //   const [colorsApi, setColors] = useState()
+  //  let colors:any = null
+
+  //   if(colorsApi){
+  //     // console.log(colorsApi,"colorsApi");
+  //     console.log(JSON.parse(colorsApi),"PPPP");
+
+  //     colors= JSON.parse(colorsApi).colors
+  //   }
+  //   //  const colors = props.styleFromFigma;
 
   // const {Primary_auto_fill,Primary_disabled} = props.styleFromFigma&& props.styleFromFigma.colors
   // console.log(Primary_auto_fill,"Primary_auto_fill")
 
-  useEffect(() => {
-    console.log("componentDidMount");
-    axios.get(`figma-token`).then((res) => {
-      
-      setColors(res.data.AlephDesignTokenFigma)
-      
-    });
-    return () => {
-      console.log("componentWillUnmount");
-    
-    };
-  }, [colors]); // empty-array means don't watch for any updates
+  //   useEffect(() => {
+  //     console.log("componentDidMount");
+  //     axios.get(`figma-token`).then((res) => {
 
+  //       setColors(res.data.AlephDesignTokenFigma)
+
+  //     });
+  //     return () => {
+  //       console.log("componentWillUnmount");
+
+  //     };
+  //   }, []); // empty-array means don't watch for any updates
 
   const AlephButton = withStyles({
     root: {
@@ -98,8 +94,8 @@ const AlephButton = (props: any) => {
   const useStyles = makeStyles((theme: any) => ({
     primary: {
       color: '#FFFFFF',
-      
-      backgroundColor: `${colors ? colors.Primary.value: "blue" }`
+
+      backgroundColor: `${colors ? colors.Primary.value : 'blue'}`
     },
 
     primaryWhiteBackground: {
@@ -107,18 +103,18 @@ const AlephButton = (props: any) => {
       color: '#00694B'
     },
     PrimaryDisabled: {
-      // backgroundColor: `${colors.Primary_disabled.value}`,
+      backgroundColor: `${colors.Primary_disabled.value}`,
       color: '#FFFFFF',
       pointerEvents: 'none'
     },
     PrimaryDisabledNoBackgroud: {
-      // backgroundColor: `${colors.primary_nobackground.value}`,
+      backgroundColor: `${colors.primary_nobackground.value}`,
       color: '#000000',
       pointerEvents: 'none',
       border: ' 2px solid #D5DADD'
     },
     PrimaryAutoFill: {
-      color: '#000000',
+      color: '#000000'
 
       // backgroundColor: `${colors.Primary_auto_fill.value}`
     }
@@ -156,13 +152,10 @@ const AlephButton = (props: any) => {
   }
 
   return (
-    
-
-    
     <>
       <AlephButton variant="contained" className={classType}>
         {props.title}
-      </AlephButton> 
+      </AlephButton>
     </>
   );
 };
