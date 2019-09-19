@@ -1,0 +1,55 @@
+@import '../../../../../alephFigma/colors';
+@import '../../../../../alephFigma/typography';
+.button {
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  display: block;
+ font-family: $font-family-font-family-primary;
+  font-size: 0.9em;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Size */
+.small {
+  padding: 0.5em 0.6em;
+}
+
+.medium {
+  padding: 1.1em 1.3em;
+}
+
+.large {
+  padding: 1.7em 2.4em;
+}
+
+/* Theme */
+.default {
+  color: #fff;
+  background: $colors-primary-success;
+  border: 1px solid $colors-primary-success;
+}
+
+.rounded {
+  color: $colors-primary-success;
+  background: #fff;
+  border: 1px solid $colors-primary-success;
+  transition: color 0.3s ease, background 0.3s ease;
+
+  &:hover {
+    color:$colors-primary-success;
+    background: $colors-primary-success;
+  }
+}
+
+/* Disabled */
+.disabled {
+  color: $colors-primary-success;
+  background: $colors-primary-success;
+  border-color:$colors-primary-success;
+  cursor: default;
+}
